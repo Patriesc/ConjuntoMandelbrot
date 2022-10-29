@@ -11,10 +11,7 @@ public class MandelbrotPanel extends javax.swing.JFrame {
     }
 
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        // Variables declaration - do not modify//GEN-BEGIN:variables
         JButton jButton1 = new JButton();
         panel = new javax.swing.JPanel();
         JButton jButton2 = new JButton();
@@ -177,7 +174,7 @@ public class MandelbrotPanel extends javax.swing.JFrame {
 
                 int velocidad = mandelbrot(x, y);
 
-                g.setColor(Color.getHSBColor((velocidad)/(float)160, 1, 1));
+                g.setColor(Color.getHSBColor((velocidad)/(float)180, 1, 1));
                 g.drawRect(i, j, 1, 1);
             }
         }
