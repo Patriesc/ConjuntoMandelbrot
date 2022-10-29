@@ -1,4 +1,4 @@
-﻿# ConjuntoMandelbrot
+﻿# Conjunto de Mandelbrot
 
 Enlace al repositorio: https://github.com/Patriesc/ConjuntoMandelbrot.git
 
