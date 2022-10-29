@@ -5,11 +5,9 @@ import java.awt.*;
 
 public class MandelbrotPanel extends javax.swing.JFrame {
 
-
     public MandelbrotPanel() {
         initComponents();
     }
-
 
     private void initComponents() {
         JButton jButton1 = new JButton();
@@ -26,6 +24,7 @@ public class MandelbrotPanel extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelMousePressed(evt);
             }
+
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 panelMouseReleased(evt);
             }
@@ -85,20 +84,20 @@ public class MandelbrotPanel extends javax.swing.JFrame {
     int cx2, cy2;
 
     private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
-        cx1=cx2=evt.getX();
-        cy1=cy2=evt.getY();
+        cx1 = cx2 = evt.getX();
+        cy1 = cy2 = evt.getY();
     }//GEN-LAST:event_panelMousePressed
 
 
     private void panelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseReleased
-        cx2=evt.getX();
-        cy2=evt.getY();
+        cx2 = evt.getX();
+        cy2 = evt.getY();
 
-        x1 = cx1*(x2 - x1)/panel.getWidth() + x1;
-        y1 = y1 - cy1*(y1 - y2)/panel.getHeight();
+        x1 = cx1 * (x2 - x1) / panel.getWidth() + x1;
+        y1 = y1 - cy1 * (y1 - y2) / panel.getHeight();
 
-        x2 = cx2*(x2 - x1)/panel.getWidth() + x1;
-        y2 = y1 - cy2*(y1 - y2)/panel.getHeight();
+        x2 = cx2 * (x2 - x1) / panel.getWidth() + x1;
+        y2 = y1 - cy2 * (y1 - y2) / panel.getHeight();
 
         pintaMandelbrot();
     }//GEN-LAST:event_panelMouseReleased
@@ -110,39 +109,34 @@ public class MandelbrotPanel extends javax.swing.JFrame {
 
         g.drawRect(cx1, cy1, Math.abs(cx2 - cx1), Math.abs(cy2 - cy1));
 
-        cx2=evt.getX();
-        cy2=evt.getY();
+        cx2 = evt.getX();
+        cy2 = evt.getY();
 
         g.drawRect(cx1, cy1, Math.abs(cx2 - cx1), Math.abs(cy2 - cy1));
     }//GEN-LAST:event_panelMouseDragged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         x1 = -2;
-        y1 =  1;
-        x2 =  1;
+        y1 = 1;
+        x2 = 1;
         y2 = -1;
 
         pintaMandelbrot();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
-
-
-
-
-
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 
 
-    private int mandelbrot(double x, double y){
-        double zn1r=0, zn1i=0;
-        double zn2r=0, zn2i=0;
-        int contador=0;
+    private int mandelbrot(double x, double y) {
+        double zn1r = 0, zn1i = 0;
+        double zn2r = 0, zn2i = 0;
+        int contador = 0;
 
-        while(contador<300 &&  (zn2r*zn2r + zn2i*zn2i) < 10000 ){
-            zn2r = zn1r*zn1r - zn1i*zn1i + x;
-            zn2i = 2*zn1r*zn1i + y;
+        while (contador < 300 && (zn2r * zn2r + zn2i * zn2i) < 10000) {
+            zn2r = zn1r * zn1r - zn1i * zn1i + x;
+            zn2i = 2 * zn1r * zn1i + y;
 
             zn1r = zn2r;
             zn1i = zn2i;
@@ -155,8 +149,8 @@ public class MandelbrotPanel extends javax.swing.JFrame {
 
 
     double x1 = -2;
-    double y1 =  1;
-    double x2 =  1;
+    double y1 = 1;
+    double x2 = 1;
     double y2 = -1;
 
 
@@ -166,15 +160,15 @@ public class MandelbrotPanel extends javax.swing.JFrame {
         int w = panel.getWidth();
         int h = panel.getHeight();
 
-        for(int i=0; i<panel.getWidth(); i++){
-            for(int j=0; j<panel.getHeight(); j++){
+        for (int i = 0; i < panel.getWidth(); i++) {
+            for (int j = 0; j < panel.getHeight(); j++) {
 
-                x =  i * (x2 - x1)/w + x1;
-                y = y1 - j * (y1 - y2)/h;
+                x = i * (x2 - x1) / w + x1;
+                y = y1 - j * (y1 - y2) / h;
 
                 int velocidad = mandelbrot(x, y);
 
-                g.setColor(Color.getHSBColor((velocidad)/(float)180, 1, 1));
+                g.setColor(Color.getHSBColor((velocidad) / (float) 180, 1, 1));
                 g.drawRect(i, j, 1, 1);
             }
         }
